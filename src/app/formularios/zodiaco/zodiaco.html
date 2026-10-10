@@ -1,39 +1,85 @@
-<br>
-<br>
-<br>
+<div class="min-h-screen bg-gray-100 flex items-center justify-center p-6">
+  <div class="bg-white shadow-lg rounded-xl w-full max-w-5xl p-8">
 
-<form class="max-w-md mx-auto">
-  <div class="relative z-0 w-full mb-5 group">
-      <input type="email" name="floating_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " required />
-      <label for="floating_email" class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Email address</label>
-  </div>
-  <div class="relative z-0 w-full mb-5 group">
-      <input type="password" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " required />
-      <label for="floating_password" class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Password</label>
-  </div>
-  <div class="relative z-0 w-full mb-5 group">
-      <input type="password" name="repeat_password" id="floating_repeat_password" class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " required />
-      <label for="floating_repeat_password" class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Confirm password</label>
-  </div>
-  <div class="grid md:grid-cols-2 md:gap-6">
-    <div class="relative z-0 w-full mb-5 group">
-        <input type="text" name="floating_first_name" id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " required />
-        <label for="floating_first_name" class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">First name</label>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+      <div class="md:border-r md:pr-10">
+
+        <h2 class="text-2xl font-semibold mb-6 text-center">
+          Datos Personales
+        </h2>
+
+        <form [formGroup]="formulario" (ngSubmit)="imprimir()" class="flex flex-col gap-4">
+
+          <div class="flex flex-col gap-1">
+            <label class="font-medium">Nombre: </label>
+            <input type="text" formControlName="nombre" class="border border-gray-300 rounded-md px-3 py-2">
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label class="font-medium">Apellido paterno: </label>
+            <input type="text" formControlName="apellidoPaterno" class="border border-gray-300 rounded-md px-3 py-2">
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label class="font-medium">Apellido materno: </label>
+            <input type="text" formControlName="apellidoMaterno" class="border border-gray-300 rounded-md px-3 py-2">
+          </div>
+
+          <div>
+            <p class="font-medium mb-2 text-center">Fecha de nacimiento: </p>
+
+            <div class="grid grid-cols-3 gap-3">
+
+              <div class="flex flex-col gap-1">
+                <label class="text-sm text-center">Día: </label>
+                <input type="number" formControlName="dia" class="border border-gray-300 rounded-md px-3 py-2 w-full">
+              </div>
+
+              <div class="flex flex-col gap-1">
+                <label class="text-sm text-center">Mes: </label>
+                <input type="number" formControlName="mes" class="border border-gray-300 rounded-md px-3 py-2 w-full">
+              </div>
+
+              <div class="flex flex-col gap-1">
+                <label class="text-sm text-center">Año: </label>
+                <input type="number" formControlName="year" class="border border-gray-300 rounded-md px-3 py-2 w-full">
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <p class="font-medium mb-2 text-center">Sexo: </p>
+
+            <div class="flex justify-center gap-6">
+              <label class="flex items-center gap-2">
+                <input type="radio" value="Masculino" formControlName="sexo">Masculino
+              </label>
+
+              <label class="flex items-center gap-2">
+                <input type="radio" value="Femenino" formControlName="sexo">Femenino
+              </label>
+
+            </div>
+          </div>
+          <button type="submit" class="bg-black text-white rounded-md px-4 py-2 mt-4 hover:bg-gray-800">Imprimir</button>
+        </form>
+
+      </div>
+
+      <div class="flex flex-col items-center justify-center text-center min-h-96">
+
+        @if (mostrarResultado) {
+          <p class="text-xl mb-4"> Hola <span class="font-bold"> {{ resultado.nombreCompleto }} </span></p>
+          <p class="text-xl mb-4">Tienes <span class="font-bold"> {{ resultado.edad }} </span> años </p>
+          <p class="text-lg mb-2"> Tu signo zodiacal chino es: </p>
+          <p class="text-3xl font-bold mb-4">{{ resultado.signo }}</p>
+          <img [src]="resultado.imagen" [alt]="resultado.signo" class="w-40 h-40 object-contain">
+
+        } @else {
+          <p class="text-gray-400"> Completa el formulario y presiona Imprimir </p>
+        }
+      </div>
     </div>
-    <div class="relative z-0 w-full mb-5 group">
-        <input type="text" name="floating_last_name" id="floating_last_name" class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " required />
-        <label for="floating_last_name" class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Last name</label>
-    </div>
   </div>
-  <div class="grid md:grid-cols-2 md:gap-6">
-    <div class="relative z-0 w-full mb-5 group">
-        <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_phone" id="floating_phone" class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " required />
-        <label for="floating_phone" class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Phone number</label>
-    </div>
-    <div class="relative z-0 w-full mb-5 group">
-        <input type="text" name="floating_company" id="floating_company" class="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer" placeholder=" " required />
-        <label for="floating_company" class="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Company (Ex. Google)</label>
-    </div>
-  </div>
-  <button type="submit" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Submit</button>
-</form>
+</div>
